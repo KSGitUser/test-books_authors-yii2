@@ -124,4 +124,19 @@ class BooksController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionList()
+    {
+
+        $books = new Books();
+
+        $dataProvider = $books->getListOfBooksWithAuthors();
+        /*var_dump($dataProvider);
+        var_dump($dataProvider[0]['author']['name']);
+        exit;*/
+
+        return $this->render('list', [
+            'data' => $dataProvider,
+        ]);
+    }
 }
