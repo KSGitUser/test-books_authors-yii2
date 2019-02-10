@@ -19,6 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Authors', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -28,6 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'surname',
+
+            [ 'label' => 'Count books',
+                'value' => function ($data) {
+
+                    return count($data->books);
+                }],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

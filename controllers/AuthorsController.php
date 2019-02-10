@@ -8,6 +8,7 @@ use app\models\AuthorsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\tables\Books;
 
 /**
  * AuthorsController implements the CRUD actions for Authors model.
@@ -37,6 +38,8 @@ class AuthorsController extends Controller
     {
         $searchModel = new AuthorsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -119,7 +122,7 @@ class AuthorsController extends Controller
     protected function findModel($id)
     {
         if (($model = Authors::findOne($id)) !== null) {
-            return $model;
+             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');

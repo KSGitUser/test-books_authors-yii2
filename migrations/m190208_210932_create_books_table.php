@@ -28,6 +28,8 @@ class m190208_210932_create_books_table extends Migration
      */
     public function safeDown()
     {
+
         $this->dropTable('{{%books}}');
+
     }
 }

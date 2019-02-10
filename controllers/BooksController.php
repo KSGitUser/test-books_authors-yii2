@@ -38,6 +38,9 @@ class BooksController extends Controller
         $searchModel = new BooksSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+      /*  var_dump($dataProvider->query->all()); exit; // выводит результат запроса к базе*/
+
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -129,11 +132,7 @@ class BooksController extends Controller
     {
 
         $books = new Books();
-
         $dataProvider = $books->getListOfBooksWithAuthors();
-        /*var_dump($dataProvider);
-        var_dump($dataProvider[0]['author']['name']);
-        exit;*/
 
         return $this->render('list', [
             'data' => $dataProvider,

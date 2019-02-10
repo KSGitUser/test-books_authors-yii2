@@ -63,6 +63,7 @@ class AuthorsSearch extends Authors
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'surname', $this->surname]);
+        $query->with('books');
 
         return $dataProvider;
     }

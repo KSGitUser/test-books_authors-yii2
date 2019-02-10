@@ -48,6 +48,14 @@ class BooksSearch extends Books
             'query' => $query,
         ]);
 
+        $query->joinWith(['author' => function($query) {$query->from(['author' => 'authors']);}]);
+
+        $dataProvider->sort->attributes['author.name'] = [
+            'asc' => ['author.name' => SORT_ASC],
+            'desc' => ['author.name' => SORT_DESC],
+        ];
+
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -63,6 +71,10 @@ class BooksSearch extends Books
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title]);
+
+        $query->andFilterWhere(['like', 'author.name', $this->getAttribute('author.name')]);
+
+   /*     $query->with('author');*/
 
         return $dataProvider;
     }
