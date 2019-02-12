@@ -35,6 +35,7 @@
 Результат представить ссылкой на репозиторий.
 
 Желательно, в репозиторий залить пустой каркас приложения, а затем с внесёнными изменениями, чтобы можно было проследить diff.
-You can see code coverage output under the `tests/_output` directory.
+
+
 "# test-books_authors--yii2" 
 "# KSGitUser-test-books_authors--yii2" 
