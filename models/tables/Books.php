@@ -4,6 +4,7 @@ namespace app\models\tables;
 
 use Yii;
 
+
 /**
  * This is the model class for table "books".
  *
@@ -66,4 +67,18 @@ class Books extends \yii\db\ActiveRecord
             return $this->find()->with('author')->all();
 
         }
+
+        public function fields()
+        {
+             return [
+                'id',
+                'title',
+                'author' => function($model) {
+                    return $model->author->name . " " . $model->author->surname;
+                }
+
+            ];
+        }
+
+
 }
